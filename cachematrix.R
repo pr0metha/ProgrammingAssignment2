@@ -18,8 +18,10 @@ makeCacheMatrix <- function(x = matrix()) {
   
     ##Returns internal x matrix
     get <- function() x
+    
     ##Caches inverse matrix
     setinverse <- function(inv) inverse <<- inv
+    
     ##Returns cached inverse matrix
     getinverse <- function() inverse
     
@@ -39,14 +41,17 @@ cacheSolve <- function(x, ...) {
       message("getting cached data")
       return(inverse)
     }
-    #If null, set and calculate the inverse
-    matrix <- x$get()
+    
+    #If null, set and calculate the inverse.
     #Make an identity matrix (assuming square matrix)
     i <- diag(ncol(m))
     #Calculate inverse
     inverse <- solve(m,i)
+    
     #Set cached inverse
+    matrix <- x$get()
     x$setinverse(inverse)
+    
     #return inverse
     inverse
 }
