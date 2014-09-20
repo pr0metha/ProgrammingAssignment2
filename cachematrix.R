@@ -43,13 +43,13 @@ cacheSolve <- function(x, ...) {
     }
     
     #If null, set and calculate the inverse.
+    m <- x$get()
     #Make an identity matrix (assuming square matrix)
     i <- diag(ncol(m))
     #Calculate inverse
     inverse <- solve(m,i)
     
     #Set cached inverse
-    matrix <- x$get()
     x$setinverse(inverse)
     
     #return inverse
